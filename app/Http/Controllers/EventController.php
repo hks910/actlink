@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Member;
-use App\Models\SystemLog;
+use App\Models\Systemlog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +53,7 @@ class EventController extends Controller
         }
 
         // Log system
-        SystemLog::create([
+        Systemlog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Viewed',
             'OperationDescription' => 'Viewed event detail: ' . $event->eventName,
@@ -95,7 +95,7 @@ class EventController extends Controller
         ]);
 
         // Log system
-        SystemLog::create([
+        Systemlog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Registered',
             'OperationDescription' => 'User ' . $user->name . ' registered for event: ' . $event->eventName,
