@@ -279,7 +279,7 @@
                 <!-- Footer Column 1: Logo -->
                 <div class="col-3 my-4 text-center">
                     <!-- ActLink Logo -->
-                    <img src="{{ asset('assets/images/Logo.png') }}" alt="ActLink Logo" class="footer-logo" style="max-width: 150px;">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="ActLink Logo" class="footer-logo" style="max-width: 150px;">
                 </div>
                 
                 <!-- Footer Column 2: About ActLink -->
