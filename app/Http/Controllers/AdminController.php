@@ -251,6 +251,8 @@ class AdminController extends Controller
 
             $user = $organizer->user;
 
+            
+
             $this->logActivity(
                 'Organizer',
                 'Declined', 
