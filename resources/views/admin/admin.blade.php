@@ -96,12 +96,12 @@
                         </thead>
                         <tbody>
                             @forelse($logs as $log)
-                                <tr>
-                                    <td>{{ $log->entityName }}</td>
-                                    <td>{{ __('admin.operation_' . strtolower($log->entityOperation)) }}</td>
-                                    <td>{{ $log->operationDescription }}</td>
-                                    {{ \Carbon\Carbon::parse($log->Datetime ?? $log->datetime ?? 'default_value')->format('d M, Y H:i') }}
-                                </tr>
+                            <tr>
+                                <td>{{ $log->entityName }}</td>
+                                <td>{{ __('admin.operation_' . strtolower($log->entityOperation)) }}</td>
+                                <td>{{ $log->operationDescription }}</td>
+                                <td>{{ \Carbon\Carbon::parse($log->Datetime ?? $log->datetime ?? 'default_value')->format('d M, Y H:i') }}</td>
+                            </tr>
                             @empty
                                 <tr>
                                     <td colspan="4" class="text-center">{{ __('no_logs') }}</td> 
