@@ -53,12 +53,12 @@ class EventController extends Controller
         }
 
         // Log system
-        SystemLog::create([
-            'entityName' => 'Event',
-            'entityOperation' => 'Viewed',
-            'OperationDescription' => 'Viewed event detail: ' . $event->eventName,
-            'Datetime' => now(),
-        ]);
+        // SystemLog::create([
+        //     'entityName' => 'Event',
+        //     'entityOperation' => 'Viewed',
+        //     'OperationDescription' => 'Viewed event detail: ' . $event->eventName,
+        //     'Datetime' => now(),
+        // ]);
 
         return view('unregistered.event-detail', [
             'event' => $event,
@@ -95,7 +95,7 @@ class EventController extends Controller
         ]);
 
         // Log system
-        SystemLog::create([
+        DB::table('system_logs')->insert([
             'entityName' => 'Event',
             'entityOperation' => 'Registered',
             'OperationDescription' => 'User ' . $user->name . ' registered for event: ' . $event->eventName,
