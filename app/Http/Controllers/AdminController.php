@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Traits\LogsSystemActivity;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -17,25 +18,25 @@ class AdminController extends Controller
     use LogsSystemActivity;
     public function index(Request $request)
     {
-        $query = SystemLog::query();
-
+     
+        $query = DB::table('system_logs'); 
         if ($request->has('action') && $request->action) {
             $query->where('entityOperation', $request->action);
         }
-
+    
         if ($request->has('start_date') && $request->start_date) {
             $startDate = Carbon::parse($request->start_date)->startOfDay();
             $query->where('Datetime', '>=', $startDate);
         }
-
+    
         if ($request->has('end_date') && $request->end_date) {
             $endDate = Carbon::parse($request->end_date)->endOfDay();
             $query->where('Datetime', '<=', $endDate);
         }
-
+    
+        // Fetch paginated results using DB facade
         $logs = $query->paginate(10);
-
-
+    
         return view('admin.admin', compact('logs'));
     }
 
@@ -105,12 +106,15 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        SystemLog::create([
+        DB::table('system_logs')->insert([
             'entityName' => 'Event',
             'entityOperation' => 'Created',
-            'OperationDescription' => $user->userName .' created new event: ' . $event->eventName,
+            'OperationDescription' => 'User ' . $user->userName . 'created new event:' . $event->eventName,
             'Datetime' => now(),
         ]);
+
+
+
 
         return redirect()->route('admin.events')->with('success', 'Event created successfully');
     }
@@ -152,12 +156,15 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        SystemLog::create([
+        DB::table('system_logs')->insert([
             'entityName' => 'Event',
             'entityOperation' => 'Updated',
-            'OperationDescription' => $user->userName .' updated event: ' . $event->eventName,
+            'OperationDescription' => 'User ' .  $user->userName  . ' updated event:  ' . $event->eventName,
             'Datetime' => now(),
         ]);
+
+
+
 
         return redirect()->route('admin.events')->with('success', 'Event updated successfully!');
     }
@@ -168,12 +175,14 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        SystemLog::create([
+        DB::table('system_logs')->insert([
             'entityName' => 'Event',
             'entityOperation' => 'Deleted',
-            'OperationDescription' => $user->userName. ' deleted event: ' . $event->eventName,
+            'OperationDescription' => 'User ' . $user->userName . '  deleted event: ' . $event->eventName,
             'Datetime' => now(),
         ]);
+
+
 
         $event->delete();
 
@@ -235,6 +244,8 @@ class AdminController extends Controller
             $organizer->delete();
 
             $user = $organizer->user;
+
+            
 
             $this->logActivity(
                 'Organizer',

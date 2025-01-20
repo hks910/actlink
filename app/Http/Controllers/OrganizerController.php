@@ -230,8 +230,8 @@ class OrganizerController extends Controller
     
     public function viewParticipant($id){
         $participants = EventParticipant::where('eventId', $id)
-        ->join('users', 'eventparticipants.memberId', '=', 'users.userId')
-        ->select('eventparticipants.*', 'users.userName', 'users.userEmail',
+        ->join('users', 'eventParticipants.memberId', '=', 'users.userId')
+        ->select('eventParticipants.*', 'users.userName', 'users.userEmail',
             'users.userPhoneNumber',
             'users.userImage')
         ->get();
@@ -244,7 +244,7 @@ class OrganizerController extends Controller
         $searchTerm = $request->input('searchTerm');
     
         $participants = EventParticipant::query()
-            ->join('users', 'eventparticipants.memberId', '=', 'users.userId')
+            ->join('users', 'eventParticipants.memberId', '=', 'users.userId')
             ->leftJoin('members', 'users.userId', '=', 'members.memberId') // Adjust join type if necessary
             ->select(
                 'users.userId', // Ensure DISTINCT operates correctly by fetching the user ID

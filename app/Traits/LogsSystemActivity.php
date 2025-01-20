@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\SystemLog;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 trait LogsSystemActivity
 {
@@ -16,11 +17,13 @@ trait LogsSystemActivity
      */
     public function logActivity($entityName, $operation, $description)
     {
-        SystemLog::create([
+        
+        DB::table('system_logs')->insert([
             'entityName' => $entityName,
             'entityOperation' => $operation,
             'OperationDescription' => $description,
             'Datetime' => Carbon::now(),
         ]);
+
     }
 }

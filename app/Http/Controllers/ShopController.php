@@ -6,7 +6,7 @@ use App\Models\claimedItem;
 use App\Models\ShopItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -27,10 +27,11 @@ class ShopController extends Controller
         $user->member->memberPoints -= $item->price;
         $user->member->save();
 
-        ClaimedItem::create([
+        DB::table('claimed_items')->insert([
             'userId' => $user->userId,
             'itemId' => $item->itemId,
         ]);
+
 
         return redirect()->route('shop.index')->with('success', 'Item successfully claimed!');
     }

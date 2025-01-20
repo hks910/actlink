@@ -100,7 +100,7 @@
                                     <td>{{ $log->entityName }}</td>
                                     <td>{{ __('admin.operation_' . strtolower($log->entityOperation)) }}</td>
                                     <td>{{ $log->operationDescription }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($log->Datetime)->format('d M, Y H:i') }}</td>
+                                    {{ \Carbon\Carbon::parse($log->Datetime ?? $log->datetime ?? 'default_value')->format('d M, Y H:i') }}
                                 </tr>
                             @empty
                                 <tr>

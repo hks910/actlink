@@ -52,13 +52,7 @@ class EventController extends Controller
             session(['url.intended' => url()->full()]);
         }
 
-        // Log system
-        // SystemLog::create([
-        //     'entityName' => 'Event',
-        //     'entityOperation' => 'Viewed',
-        //     'OperationDescription' => 'Viewed event detail: ' . $event->eventName,
-        //     'Datetime' => now(),
-        // ]);
+
 
         return view('unregistered.event-detail', [
             'event' => $event,
