@@ -109,7 +109,7 @@
     <div class="container d-flex align-items-center">
         <!-- Company Logo on the Left -->
         <a class="navbar-brand me-auto" href="#">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
+            <img src="{{ asset('assets/images/Logo.png') }}" alt="Logo">
         </a>
 
         <!-- Hamburger Menu for Mobile -->
@@ -279,7 +279,7 @@
                 <!-- Footer Column 1: Logo -->
                 <div class="col-3 my-4 text-center">
                     <!-- ActLink Logo -->
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="ActLink Logo" class="footer-logo" style="max-width: 150px;">
+                    <img src="{{ asset('assets/images/Logo.png') }}" alt="ActLink Logo" class="footer-logo" style="max-width: 150px;">
                 </div>
                 
                 <!-- Footer Column 2: About ActLink -->
