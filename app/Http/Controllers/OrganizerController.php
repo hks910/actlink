@@ -7,7 +7,7 @@ use App\Models\EventParticipant;
 use App\Models\Organizer;
 use App\Models\ShopItem;
 use Illuminate\Http\Request;
-use App\Models\SystemLog;
+use App\Models\systemLog;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\LogsSystemActivity;
 
