@@ -231,8 +231,8 @@ class OrganizerController extends Controller
     
     public function viewParticipant($id){
         $participants = EventParticipant::where('eventId', $id)
-        ->join('users', 'eventparticipants.memberId', '=', 'users.userId')
-        ->select('eventparticipants.*', 'users.userName', 'users.userEmail',
+        ->join('users', 'eventParticipants.memberId', '=', 'users.userId')
+        ->select('eventParticipants.*', 'users.userName', 'users.userEmail',
             'users.userPhoneNumber',
             'users.userImage')
         ->get();
