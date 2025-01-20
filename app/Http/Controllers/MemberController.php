@@ -6,6 +6,7 @@ use App\Models\Event;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class MemberController extends Controller
 {
@@ -27,7 +28,7 @@ class MemberController extends Controller
     }
 
     public function leaderboard() {
-        $members = DB::table('members')
+        $members = FacadesDB::table('members')
         ->join('users', 'members.memberId', '=', 'users.userId')
         ->select('users.userName', 'members.memberPoints')
         ->orderBy('members.memberPoints', 'desc')

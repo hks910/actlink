@@ -182,8 +182,13 @@ class AdminController extends Controller
             'Datetime' => now(),
         ]);
 
-atetime' => now(),
-        ]);
+
+        // SystemLog::create([
+        //     'entityName' => 'Event',
+        //     'entityOperation' => 'Deleted',
+        //     'OperationDescription' => $user->userName. ' deleted event: ' . $event->eventName,
+        //     'Datetime' => now(),
+        // ]);
 
         $event->delete();
 
