@@ -245,7 +245,7 @@ class OrganizerController extends Controller
         $searchTerm = $request->input('searchTerm');
     
         $participants = EventParticipant::query()
-            ->join('users', 'eventparticipants.memberId', '=', 'users.userId')
+            ->join('users', 'eventParticipants.memberId', '=', 'users.userId')
             ->leftJoin('members', 'users.userId', '=', 'members.memberId') // Adjust join type if necessary
             ->select(
                 'users.userId', // Ensure DISTINCT operates correctly by fetching the user ID
