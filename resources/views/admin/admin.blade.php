@@ -44,8 +44,6 @@
                     <div class="container">
                         <form method="GET" action="{{ route('admin.home') }}" class="mb-4">
                             
-                 
-
                             <div class="row">
                                 <!-- Filter by operation -->
                                 <div class="col-md-3">

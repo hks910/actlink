@@ -57,22 +57,30 @@
                 </div>
 
                 <!-- Filter By Date -->
-                <form method="GET" action="{{ route('admin.events') }}">
-                    <div class="form-inline mb-4">
-                        <label for="filter" class="mr-2">{{ __('admin.filter_events') }}:</label>
-                        <select name="filter" class="form-control">
-                            <option value="">{{ __('admin.select_filter') }}</option>
-                            <option value="past" {{ request('filter') == 'past' ? 'selected' : '' }}>{{ __('admin.past') }}</option>
-                            <option value="current" {{ request('filter') == 'current' ? 'selected' : '' }}>{{ __('admin.current') }}</option>
-                            <option value="upcoming" {{ request('filter') == 'upcoming' ? 'selected' : '' }}>{{ __('admin.upcoming') }}</option>
-                        </select>
-                        <button type="submit" class="btn btn-info ml-2">{{ __('admin.filter') }}</button>
+                <form method="GET" action="{{ route('admin.events') }}" class="mb-4">
+                    <div class="row align-items-center">
+                        <!-- Label -->
+                        <div class="col-auto">
+                            <label for="filter" class="col-form-label">{{ __('admin.filter_events') }}:</label>
+                        </div>
+                        <!-- Dropdown -->
+                        <div class="col-auto">
+                            <select name="filter" id="filter" class="form-control">
+                                <option value="">{{ __('admin.select_filter') }}</option>
+                                <option value="past" {{ request('filter') == 'past' ? 'selected' : '' }}>{{ __('admin.past') }}</option>
+                                <option value="current" {{ request('filter') == 'current' ? 'selected' : '' }}>{{ __('admin.current') }}</option>
+                                <option value="upcoming" {{ request('filter') == 'upcoming' ? 'selected' : '' }}>{{ __('admin.upcoming') }}</option>
+                            </select>
+                        </div>
+                        <!-- Button -->
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-info">{{ __('admin.filter') }}</button>
+                        </div>
                     </div>
                 </form>
 
+                <!-- Create Event Button -->
                 <a href="{{ route('admin.createEvent') }}" class="btn btn-primary mb-4">{{ __('admin.create_new_event') }}</a>
-
-                
 
                 <table class="table mt-4">
                     <thead>

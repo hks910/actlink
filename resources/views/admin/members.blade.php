@@ -46,12 +46,18 @@
                 <h5 class="card-title mb-4">{{ __('admin.member_management') }}</h5>
 
                 <!-- Search Form -->
-                <form action="{{ route('admin.members.indexMember') }}" method="GET">
-                    <div class="form-group">
-                        <label for="searchName">{{ __('admin.search_by_name') }}</label>
-                        <input type="text" id="searchName" name="searchName" class="form-control" placeholder="{{ __('admin.enter_name') }}" value="{{ request()->get('searchName') }}">
+                <form action="{{ route('admin.members.indexMember') }}" method="GET" class="mb-4">
+                    <div class="row align-items-center">
+                        <!-- Input Field -->
+                        <div class="col-md-8 col-sm-12 mb-2 mb-md-0 d-flex align-items-center">
+                            <label for="searchName" class="sr-only">{{ __('admin.search_by_name') }}</label>
+                            <input type="text" id="searchName" name="searchName" class="form-control" placeholder="{{ __('admin.enter_name') }}" value="{{ request()->get('searchName') }}">
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="col-md-4 col-sm-12 d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('admin.search') }}</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-4">{{ __('admin.search') }}</button>
                 </form>
 
                 @if (\Session::has('success'))
