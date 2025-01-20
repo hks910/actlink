@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('systemLog', function (Blueprint $table) {
+        Schema::create('system_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('entityName', 255);
             $table->string('entityOperation', 255);
