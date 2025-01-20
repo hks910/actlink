@@ -53,7 +53,7 @@ class EventController extends Controller
         }
 
         // Log system
-        systemLog::create([
+        SystemLog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Viewed',
             'OperationDescription' => 'Viewed event detail: ' . $event->eventName,
@@ -95,7 +95,7 @@ class EventController extends Controller
         ]);
 
         // Log system
-        systemLog::create([
+        SystemLog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Registered',
             'OperationDescription' => 'User ' . $user->name . ' registered for event: ' . $event->eventName,

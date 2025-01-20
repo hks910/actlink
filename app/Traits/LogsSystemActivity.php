@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\systemLog;
+use App\Models\SystemLog;
 use Illuminate\Support\Carbon;
 
 trait LogsSystemActivity
@@ -16,7 +16,7 @@ trait LogsSystemActivity
      */
     public function logActivity($entityName, $operation, $description)
     {
-        systemLog::create([
+        SystemLog::create([
             'entityName' => $entityName,
             'entityOperation' => $operation,
             'OperationDescription' => $description,

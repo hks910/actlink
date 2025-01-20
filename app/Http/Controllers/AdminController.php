@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Organizer;
 use App\Models\Member;
-use App\Models\systemLog;
+use App\Models\SystemLog;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\LogsSystemActivity;
 use Carbon\Carbon;
@@ -17,7 +17,7 @@ class AdminController extends Controller
     use LogsSystemActivity;
     public function index(Request $request)
     {
-        $query = systemLog::query();
+        $query = SystemLog::query();
 
         if ($request->has('action') && $request->action) {
             $query->where('entityOperation', $request->action);
@@ -105,7 +105,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        systemLog::create([
+        SystemLog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Created',
             'OperationDescription' => $user->userName .' created new event: ' . $event->eventName,
@@ -152,7 +152,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        systemLog::create([
+        SystemLog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Updated',
             'OperationDescription' => $user->userName .' updated event: ' . $event->eventName,
@@ -168,7 +168,7 @@ class AdminController extends Controller
 
         $user = Auth::user();
 
-        systemLog::create([
+        SystemLog::create([
             'entityName' => 'Event',
             'entityOperation' => 'Deleted',
             'OperationDescription' => $user->userName. ' deleted event: ' . $event->eventName,
