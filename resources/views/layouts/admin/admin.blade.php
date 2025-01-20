@@ -5,94 +5,69 @@
   <meta charset="utf-8">
   <title>Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-  <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> --}}
+  
+  <!-- Bootstrap CSS -->
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-
+  <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
   
-  
+  <!-- Bootstrap JS -->
+  <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </head>
 
 <body>
   <div id="wrapper">
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#">MyAdmin</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
-
-        {{-- @auth('admin') --}}
           <ul class="navbar-nav side-nav">
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->is('/') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.home') }}">Dashboard</a>
+              <a class="nav-link text-white {{ request()->is('/') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('admin-events') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.events') }}">Events</a>
+              <a class="nav-link {{ request()->is('admin-events') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.events') }}">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('admin/organizers') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.organizers') }}">Organizations</a>
+              <a class="nav-link {{ request()->is('admin/organizers') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.organizers') }}">Organizations</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.members.indexMember') }}">Members</a>
+              <a class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.members.indexMember') }}">Members</a>
             </li>
-        </ul>
-        
-        {{-- @endauth --}}
+          </ul>
+          
           <ul class="navbar-nav ml-md-auto d-md-flex">
-
-            {{-- @auth('admin') --}}
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-          </a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          {{-- {{ Auth::guard('admin')->user()->name }} --}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" onclick=" event.preventDefault();
-            document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-
-          </form>
-
-      {{-- @else
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">login
-      <span class="sr-only">(current)</span>
-      </a>
-    </li> --}}
-  {{-- @endauth --}}
-
-
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{-- {{ Auth::guard('admin')->user()->name }} --}}
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                  </form>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="container-fluid">
-
       <main class="py-4">
         @yield('content')
       </main>
-
     </div>
   </div>
-  </div>
-  <script type="text/javascript">
-
-  </script>
 </body>
 
 </html>
