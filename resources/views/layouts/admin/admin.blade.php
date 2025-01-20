@@ -31,10 +31,10 @@
         {{-- @auth('admin') --}}
           <ul class="navbar-nav side-nav">
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->is('/') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.home') }}">Dashboard</a>
+                <a class="nav-link {{ request()->is('admin/home') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('admin-events') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.events') }}">Events</a>
+                <a class="nav-link {{ request()->is('admin/events') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.events') }}">Events</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('admin/organizers') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.organizers') }}">Organizations</a>
