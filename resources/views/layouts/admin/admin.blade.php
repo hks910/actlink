@@ -5,14 +5,11 @@
   <meta charset="utf-8">
   <title>Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{asset('assets/style.css')}}" rel="stylesheet">
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -28,26 +25,21 @@
         <div class="collapse navbar-collapse" id="navbarText">
 
         {{-- @auth('admin') --}}
-            <ul class="navbar-nav side-nav">
-              <li class="nav-item">
-                <a class="nav-link text-white {{request()->is('/')? 'text-light' : 'text'}}" style="margin-left: 20px;" href="{{route('admin.home')}}">Dashboard
-                  {{-- <span class="sr-only">(current)</span> --}}
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{request()->is('admin-events')? 'text-light' : 'text-normal'}}" href="{{route('admin.events')}}" style="margin-left: 20px;">Events</a>
-              </li>
-             
-              <li class="nav-item">
-                  <a class="nav-link {{request()->is('admin/organizers') ? 'text-light' : 'text-normal'}}" href="{{route('admin.organizers')}}" style="margin-left: 20px;">Organizations</a>
-              </li>
-
-              <li class="nav-item">
-                  <a class="nav-link {{request()->is('admin/members') ? 'text-light' : 'text-normal'}}" href="{{route('admin.members.indexMember')}}" style="margin-left: 20px;">Members</a>
-              </li>
-       
-          
-            </ul>
+          <ul class="navbar-nav side-nav">
+            <li class="nav-item">
+                <a class="nav-link text-white {{ request()->is('/') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.home') }}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('admin-events') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.events') }}">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('admin/organizers') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.organizers') }}">Organizations</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'text-light' : 'text-normal' }}" style="margin-left: 20px;" href="{{ route('admin.members.indexMember') }}">Members</a>
+            </li>
+        </ul>
+        
         {{-- @endauth --}}
           <ul class="navbar-nav ml-md-auto d-md-flex">
 
