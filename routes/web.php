@@ -64,6 +64,7 @@ Route::middleware(['auth', CheckUserRole::class])->prefix('organizer')->name('or
     Route::put('/event-edit/{id}', [OrganizerController::class, 'edit'])->name('event-update');
     Route::get('/create-product', [OrganizerController::class, 'createProduct'])->name('create-product');
     Route::post('/create-product', [OrganizerController::class, 'addProduct'])->name('create-product');
+    Route::get('/view-products', [OrganizerController::class, 'viewProducts'])->name('view-products');
     Route::get('/organizer/search-participant', [OrganizerController::class, 'searchParticipant'])->name('search-participant');
 
 });
@@ -73,6 +74,9 @@ Route::middleware(['auth',CheckUserRole::class])->prefix('member')->name('member
     Route::get('/home', [MemberController::class, 'index'])->name('home');
     Route::post('/events/{id}/register', [EventController::class, 'register'])->name('event.register');
     Route::get('/registered-events', [EventController::class, 'registeredEvents'])->name('registered.events');
+    Route::get('/profile/{userId}', [UserController::class, 'showProfile'])->name('profile');
+    Route::get('/profile/edit/{userId}', [UserController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update/{userId}', [UserController::class, 'update'])->name('profile.update');
 });
 
 // Event Routes (Publicly accessible)
@@ -82,9 +86,6 @@ Route::get('/leaderboard', [MemberController::class, 'leaderboard'])->name('lead
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/claim/{itemId}', [ShopController::class, 'claim'])->middleware('auth')->name('shop.claim');
 Route::get('/how-it-works', [HomeController::class, 'howItWorks'])->name('howItWorks');
-Route::get('/profile/{userId}', [UserController::class, 'showProfile'])->name('profile');
-Route::get('/profile/edit/{userId}', [UserController::class, 'edit'])->name('profile.edit');
-Route::put('/profile/update/{userId}', [UserController::class, 'update'])->name('profile.update');
 
 //localization
 Route::get('/set-locale/{locale}', function($locale){

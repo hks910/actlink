@@ -289,10 +289,6 @@ class OrganizerController extends Controller
         return view('organizer.event-participant', compact('participants'));
     }
     
-    
-    
-    
-
     public function createProduct(){
 
         return view('organizer.add-product');
@@ -324,5 +320,11 @@ class OrganizerController extends Controller
             'image' => $base64Image
         ]);
         return redirect('organizer/home');
+    }
+
+    public function viewProducts()
+    {
+        $products = ShopItem::all();
+        return view('organizer.view-products', compact('products'));
     }
 }

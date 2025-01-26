@@ -3,7 +3,7 @@
 return [
     'Recently-Created-Events' => 'Recently Created Events',
     'Manage-Event' => 'Manage Event',
-    'Add-Product' => 'Add Product',
+    'View-Products' => 'View Products',
     'Organized-by' => 'Organized by',
     'Create-Event' => 'Create Event',
     'Your-Events' => 'Your Events',
@@ -52,6 +52,15 @@ return [
     'Search-Placeholder' => 'Search participants by name...',
     'Search-Button' => 'Search',
     'No-Participants' => 'No participants found.',
-    'register_as' => 'Register as'
+    'register_as' => 'Register as',
 
+    'Products-Header-Title' => 'Available Products',
+    'Products-Header-Description' => 'Browse through the list of products available for points redemption.',
+    'No-Products-Available' => 'No products are available at the moment.',
+    'Product-Card-Price' => 'Price',
+    'Product-Card-Quantity' => 'Quantity',
+    'Product-Card-Description' => 'Description',
+    'Create-Product' => 'Create Product',
+    'Recently-Created-Products' => 'Recently Created Products',
+    'Manage-Product' => 'Manage Product'
 ];
