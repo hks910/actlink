@@ -47,11 +47,11 @@
                         <div class="col-md-4">
                             <div class="card shadow-sm h-100 border-0">
                                 <div class="card-img-top-container">
-                                    <img 
-                                        src="{{ $item->image ? asset($item->image) : asset('images/placeholder.png') }}" 
-                                        class="card-img-top" 
-                                        alt="{{ $item->name }}"
-                                    >
+                                <img 
+                                    src="{{ $item->image ? 'data:image/png;base64,' . $item->image : asset('images/placeholder.png') }}" 
+                                    class="card-img-top" 
+                                    alt="{{ $item->name }}"
+                                >
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="card-title fw-bold">{{ $item->name }}</h5>
