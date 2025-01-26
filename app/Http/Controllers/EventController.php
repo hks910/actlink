@@ -25,7 +25,9 @@ class EventController extends Controller
         if ($request->filled('search')) {
             $query->where('eventName', 'like', '%' . $request->search . '%');
         }
-    
+        
+        $query->where('eventDate', '>=', now()->toDateString());
+
         $events = $query->paginate(3);
     
         return view('unregistered.events', compact('events'));
