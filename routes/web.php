@@ -79,10 +79,12 @@ Route::middleware(['auth',CheckUserRole::class])->prefix('member')->name('member
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::get('/events/{id}', [EventController::class, 'show'])->name('event.detail');
 Route::get('/leaderboard', [MemberController::class, 'leaderboard'])->name('leaderboard.index');
-Route::get('/profile/{userId}', [UserController::class, 'showProfile'])->name('profile');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/claim/{itemId}', [ShopController::class, 'claim'])->middleware('auth')->name('shop.claim');
 Route::get('/how-it-works', [HomeController::class, 'howItWorks'])->name('howItWorks');
+Route::get('/profile/{userId}', [UserController::class, 'showProfile'])->name('profile');
+Route::get('/profile/edit/{userId}', [UserController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update/{userId}', [UserController::class, 'update'])->name('profile.update');
 
 //localization
 Route::get('/set-locale/{locale}', function($locale){
