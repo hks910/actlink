@@ -14,13 +14,33 @@ use App\Traits\LogsSystemActivity;
 class OrganizerController extends Controller
 {
     use LogsSystemActivity;
-    public function index(){          
-        $user = Auth::user(); 
+    public function index(Request $request)
+    {
+        $user = Auth::user();
+    
         $organizer = Organizer::where('organizerId', $user->userId)->first();
-        $events = Event::where('organizerId', $user->userId)->orderBy('eventDate', 'asc')->paginate(6);
+    
+        $query = Event::where('organizerId', $user->userId);
+    
 
-        return view('organizer.organizer', compact( 'user', 'organizer', 'events'));
+        if ($request->has('search') && !empty($request->get('search'))) {
+            $search = $request->get('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('eventName', 'like', "%$search%")
+                  ->orWhere('eventDescription', 'like', "%$search%")
+                  ->orWhere('eventLocation', 'like', "%$search%");
+            });
+        }
+    
+        if ($request->has('category') && !empty($request->get('category'))) {
+            $query->where('eventType', $request->get('category'));
+        }
+    
+        $events = $query->orderBy('eventDate', 'asc')->paginate(3);
+    
+        return view('organizer.organizer', compact('user', 'organizer', 'events'));
     }
+    
 
     public function waitingAccept()
     {
