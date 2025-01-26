@@ -22,7 +22,7 @@
                             <div class="alert alert-success text-center">{{ session('success') }}</div>
                         @endif
                         
-                        <form action="{{ route('profile.update', ['userId' => $user->userId]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('member.profile.update', ['userId' => $user->userId]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -52,7 +52,7 @@
                             <!-- Birthdate -->
                             <div class="form-group mb-4">
                                 <label for="birthdate" class="form-label fw-bold">{{ __('Birthdate') }}</label>
-                                <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('userBirthdate', $user->birthdate) }}">
+                                <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('userBirthdate', $user->member->memberDOB) }}">
                             </div>
 
                             <!-- Profile Picture -->

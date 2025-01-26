@@ -80,7 +80,7 @@
 
                         <!-- Actions -->
                         <div class="card-footer bg-light text-center py-4">
-                            <a href="{{ route('profile.edit', ['userId' => $user->userId]) }}" class="btn btn-success btn-lg">
+                            <a href="{{ route('member.profile.edit', ['userId' => $user->userId]) }}" class="btn btn-success btn-lg">
                                 <i class="bi bi-pencil-square"></i> {{ __('Edit Profile') }}
                             </a>
                         </div>
